@@ -23,6 +23,7 @@ export default function FormInput({
   ...rest
 }) {
   const errorId = `${name}-error`
+  const hintId = `${name}-hint`
 
   return (
     <div>
@@ -37,7 +38,7 @@ export default function FormInput({
         value={value}
         onChange={onChange}
         aria-invalid={error ? 'true' : 'false'}
-        aria-describedby={error ? errorId : undefined}
+        aria-describedby={error ? errorId : hint ? hintId : undefined}
         className={`${inputBase} ${
           error
             ? 'border-red-500 focus:border-red-600 focus:ring-red-600/30'
@@ -48,7 +49,7 @@ export default function FormInput({
 
       {children}
 
-      {hint && !error && <p className="mt-1.5 text-sm text-slate-600">{hint}</p>}
+      {hint && !error && <p id={hintId} className="mt-1.5 text-sm text-slate-600">{hint}</p>}
       {error && (
         <p id={errorId} className="mt-1.5 text-sm font-medium text-red-700">
           {error}
@@ -57,3 +58,4 @@ export default function FormInput({
     </div>
   )
 }
+

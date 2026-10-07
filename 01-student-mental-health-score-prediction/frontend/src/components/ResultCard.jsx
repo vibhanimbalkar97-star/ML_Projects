@@ -8,6 +8,8 @@
 //              scale must be known to draw it honestly.
 // - onReset  : called when the "Predict Again" button is clicked
 
+import Disclaimer from "./Disclaimer"
+
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600'
 
@@ -106,13 +108,7 @@ export default function ResultCard({ result, maxScore, onReset }) {
       </p>
 
       {/* Required disclaimer */}
-      <div
-        role="note"
-        className="mx-auto mt-5 max-w-md rounded-lg border border-amber-200 bg-amber-50 p-4 text-left text-sm leading-relaxed text-amber-900"
-      >
-        This tool provides an ML-based estimate for informational purposes only and
-        is not a medical diagnosis.
-      </div>
+    <Disclaimer className="mx-auto mt-5 max-w-md text-left" />
 
       <div className="mt-6 flex justify-center">
         <button

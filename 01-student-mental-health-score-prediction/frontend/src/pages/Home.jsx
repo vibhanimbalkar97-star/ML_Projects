@@ -1,7 +1,6 @@
 
-
 import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import Disclaimer from '../components/Disclaimer'
 
 // The three "How It Works" steps live in an array, so the JSX below stays short.
 const STEPS = [
@@ -26,7 +25,7 @@ const focusRing =
 export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-600">
-      <Navbar />
+  
 
       <main>
         {/* Hero */}
@@ -102,16 +101,7 @@ export default function Home() {
 
         {/* Disclaimer */}
         <section className="mx-auto max-w-5xl px-4 pb-14 sm:px-6 sm:pb-20">
-          <div
-            role="note"
-            className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900 sm:p-5"
-          >
-            <p className="font-semibold">Important</p>
-            <p className="mt-1">
-              This tool provides an ML-based estimate for informational purposes only
-              and is not a medical diagnosis.
-            </p>
-          </div>
+       <Disclaimer />
         </section>
       </main>
     </div>

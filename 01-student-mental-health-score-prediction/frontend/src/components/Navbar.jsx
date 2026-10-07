@@ -13,8 +13,10 @@ const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600'
 
 // NavLink lets us style the link for the page we are currently on.
-const linkClass = ({ isActive }) =>
-  `rounded-md px-3 py-2 text-sm font-medium transition-colors ${focusRing} ${
+const linkClass = (mobile) => ({ isActive }) =>
+  `rounded-md px-3 font-medium transition-colors ${
+    mobile ? 'block py-2.5 text-base' : 'py-2 text-sm'
+  } ${focusRing} ${
     isActive
       ? 'bg-teal-50 font-semibold text-teal-800'
       : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
@@ -25,6 +27,7 @@ const ctaClass = `inline-flex items-center justify-center rounded-lg bg-teal-700
 export default function Navbar() {
   // Only the mobile menu needs state: open or closed.
   const [isOpen, setIsOpen] = useState(false)
+  
   const closeMenu = () => setIsOpen(false)
 
   // Close the mobile menu when the user presses Escape.
@@ -72,7 +75,7 @@ export default function Navbar() {
           <ul className="flex items-center gap-1">
             {NAV_LINKS.map(({ to, label, end }) => (
               <li key={to}>
-                <NavLink to={to} end={end} className={linkClass}>
+                <NavLink to={to} end={end} className={linkClass(false)}>
                   {label}
                 </NavLink>
               </li>
@@ -123,7 +126,7 @@ export default function Navbar() {
                   to={to}
                   end={end}
                   onClick={closeMenu}
-                  className={(state) => `block ${linkClass(state)} py-2.5 text-base`}
+                  className={linkClass(true)}
                 >
                   {label}
                 </NavLink>
